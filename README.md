@@ -1,23 +1,32 @@
+# SDL_ttf but with the zig build system
 
-SDL_ttf 3.0
+This is a port of [SDL_ttf](https://github.com/libsdl-org/SDL_ttf) to the zig build system, to use it with the zig package manager.
 
-This library is a wrapper around the FreeType and Harfbuzz libraries, allowing you to use TrueType fonts to render text in SDL applications.
+This is ***not*** a wrapper.
 
-The latest version of this library is available from GitHub:
-https://github.com/libsdl-org/SDL_ttf/releases
+## Usage
 
-Installation instructions and a quick introduction is available in
-[INSTALL.md](INSTALL.md)
+Requires zig version `0.14.0`, higher versions not tested.
 
-This library is distributed under the terms of the zlib license,
-available in [LICENSE.txt](LICENSE.txt).
+Fetch it with:
+```bash
+zig fetch --save git+https://github.com/boubl/SDL_ttf.git
+```
 
-This library also uses the following libraries:
-- FreeType, licensed under the [FTL](https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/docs/FTL.TXT)
-- HarfBuzz, licensed under the [MIT license](https://github.com/harfbuzz/harfbuzz/blob/main/COPYING)
-- PlutoSVG, licensed under the [MIT license](https://github.com/sammycage/plutosvg/blob/master/LICENSE)
-- PlutoVG, licensed under the [MIT license](https://github.com/sammycage/plutovg/blob/master/LICENSE)
+And link it in your `build.zig`:
+```zig
+{
+    // SDL_ttf Dependency
+    const sdl_ttf_dep = b.dependency("sdl_ttf", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    const sdl_ttf_lib = sdl_ttf_dep.artifact("SDL_ttf");
 
-Enjoy!
+    exe_mod.linkLibrary(sdl_ttf_lib);
+}
+```
 
-Sam Lantinga (slouken@libsdl.org)
+> [!NOTE]
+> This was only tested on macOS with 0.14.0 for my personal use. PR are welcome if this does not work on other platforms.
+
