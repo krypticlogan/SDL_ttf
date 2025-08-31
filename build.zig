@@ -43,7 +43,7 @@ pub fn build(b: *std.Build) void {
     sdl_ttf_mod.addIncludePath(b.path("include/"));
 
     const sdl_ttf = b.addLibrary(.{
-        .name = "SDL_ttf",
+        .name = "sdl",
         .linkage = preferred_link_mode,
         .root_module = sdl_ttf_mod,
     });
