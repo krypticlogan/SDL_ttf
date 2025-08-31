@@ -28,6 +28,7 @@ pub fn build(b: *std.Build) void {
     const sdl_ttf_mod = b.createModule(.{
         .target = target,
         .optimize = optimize,
+        .link_libc = true
     });
     sdl_ttf_mod.addCSourceFiles(.{
         .files = &.{
@@ -47,7 +48,6 @@ pub fn build(b: *std.Build) void {
         .linkage = preferred_link_mode,
         .root_module = sdl_ttf_mod,
     });
-    sdl_ttf.linkLibC();
     sdl_ttf.installHeadersDirectory(b.path("include/SDL3_ttf"), "SDL3_ttf", .{});
 
     {
@@ -59,6 +59,7 @@ pub fn build(b: *std.Build) void {
         });
         sdl_ttf_mod.linkLibrary(sdl_dep.artifact("SDL3"));
         // const sdl_test_lib = sdl_dep.artifact("SDL3_test");
+        sdl_ttf_mod.addImport(sdl_dep.module("sdl"));
     }
 
     {
