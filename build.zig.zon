@@ -1,17 +1,17 @@
 .{
-    .name = .sdl_ttf,
+    .name = .sdl,
     .version = "3.2.0",
-    .fingerprint = 0xa05f652f9dcd0c1a, // Changing this has security and trust implications.
+    .fingerprint = 0xec638ccbbabb29e7, // Changing this has security and trust implications.
     .minimum_zig_version = "0.14.0",
 
     .dependencies = .{
         .sdl = .{
-            .url = "git+https://github.com/castholm/SDL.git#dbb1b96360658f5845ff6fac380c4f13d7276dc2",
-            .hash = "sdl-0.2.0+3.2.8-7uIn9FxHfQE325TK7b0qpgt10G3x1xl-3ZMOfTzxUg3C",
+            .url = "git+https://github.com/castholm/SDL.git#1994ca5dbad5a3e3c670a9ab8533d86cfd97bdc0",
+            .hash = "sdl-0.2.6+3.2.20-7uIn9NgjfwHH5a6HhyLHat2nHU3OP5B05QHhKJKuxEex",
         },
         .freetype = .{
-            .url = "git+https://github.com/boubl/freetype#1dea2c6021c53d4ba53d6cc8e36e8b16984a920f",
-            .hash = "freetype-0.0.0-cLfC_zRJcwCqxRJ8nY0zaejTIi32iTdkG3NFhCwTiHIC",
+            .url = "git+https://github.com/krypticlogan/freetype.git#4a9a9916392836f503c4ed2986b9f674d8294d44",
+            .hash = "freetype-0.15.1-cLfC_1RJcwAICaMpgTFJwrpjfwFhZg45KX1cahgF8wvN",
         },
     },
 
