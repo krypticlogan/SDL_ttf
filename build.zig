@@ -59,7 +59,6 @@ pub fn build(b: *std.Build) void {
         });
         sdl_ttf_mod.linkLibrary(sdl_dep.artifact("SDL3"));
         // const sdl_test_lib = sdl_dep.artifact("SDL3_test");
-        sdl_ttf_mod.addImport(sdl_dep.module("sdl"));
     }
 
     {
