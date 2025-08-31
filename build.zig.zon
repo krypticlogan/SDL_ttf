@@ -1,5 +1,5 @@
 .{
-    .name = .sdl,
+    .name = .sdl_ttf,
     .version = "3.2.0",
     .fingerprint = 0xec638ccbbabb29e7, // Changing this has security and trust implications.
     .minimum_zig_version = "0.14.0",
