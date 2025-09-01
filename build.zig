@@ -57,7 +57,11 @@ pub fn build(b: *std.Build) void {
             .optimize = optimize,
             .preferred_link_mode = .static,
         });
-        sdl_ttf_mod.linkLibrary(sdl_dep.artifact("SDL3"));
+        const sdl_lib = sdl_dep.artifact("SDL3");
+        sdl_ttf.installLibraryHeaders(sdl_lib);
+        std.debug.print("headers: {any}", .{sdl_ttf.installed_headers.items});
+        sdl_ttf_mod.linkLibrary(sdl_lib);
+        // sdl_dep.module(name: []const u8)
         // const sdl_test_lib = sdl_dep.artifact("SDL3_test");
     }
 
